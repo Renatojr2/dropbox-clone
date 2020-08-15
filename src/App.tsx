@@ -1,8 +1,9 @@
 import React from "react";
-import Section from "./Section";
+import Section from "./components/Section";
 import GlobalStyles from "./style/GlobalStyles";
 
 import data from './data'
+import SiderMenu from "./components/SiderMenu";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         title={data[4].title}
         description={data[4].description}
       />
+      <SiderMenu />
     </>
   );
 }
