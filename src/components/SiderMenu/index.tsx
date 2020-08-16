@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 
 import { Container } from "./styles";
 
+const scrollThershold = 300
+
 const SiderMenu: React.FC = ({ children }) => {
   const [scrollY, setScrollY] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   useEffect(() => {
     function onScroll() {
       setScrollY(window.scrollY);
+      setIsActive(false)
     }
 
     window.addEventListener("scroll", onScroll);
@@ -15,7 +18,14 @@ const SiderMenu: React.FC = ({ children }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return <Container>{children}</Container>;
+  const classes = [
+    isActive ? 'open': '',
+    scrollY <= scrollThershold ? 'scrollOpen': ''
+  ]
+
+  const classesName = classes.join(' ').trim()
+
+  return <Container className={classesName}>{children}</Container>;
 };
 
 export default SiderMenu;

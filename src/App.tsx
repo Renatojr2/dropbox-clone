@@ -4,6 +4,7 @@ import GlobalStyles from "./style/GlobalStyles";
 
 import data from './data'
 import SiderMenu from "./components/SiderMenu";
+import MenuForm from "./components/MenuForm";
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
         title={data[4].title}
         description={data[4].description}
       />
-      <SiderMenu />
+      <SiderMenu>
+        <MenuForm />
+      </SiderMenu>
     </>
   );
 }
